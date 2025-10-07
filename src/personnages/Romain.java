@@ -24,10 +24,10 @@ public class Romain {
     public void recevoirCoup(int forceCoup) {
         force -= forceCoup;
         if (force > 0) {
-            System.out.println(prendreParole() + "\"Aïe\"");
+            System.out.println(prendreParole() + "Aïe");
         } else {
             force = 0;
-            System.out.println(prendreParole() + "\"J'abandonne !\"");
+            System.out.println(prendreParole() + "J'abandonne !");
         }
     }
 }
