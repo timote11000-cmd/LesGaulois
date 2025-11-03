@@ -36,4 +36,7 @@ public class Gaulois {
     public void boirePotion(int effet) {
         effetPotion = effet;
     }
+    public void sePresenter() {
+        System.out.println("Le Gaulois " + nom + " : \"Bonjour, je m'appelle " + nom + ".\"");
+    }
 }

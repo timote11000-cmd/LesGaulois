@@ -24,8 +24,8 @@ public class TestGaulois {
         Druide panoramix = new Druide("Panoramix", 2);
 
         panoramix.fabriquerPotion(4);
-        panoramix.boosterGaulois(obelix);   // refusé
-        panoramix.boosterGaulois(asterix);  // accepté
+        panoramix.boosterGaulois(obelix);
+        panoramix.boosterGaulois(asterix);
 
         asterix.frapper(brutus);
         asterix.frapper(brutus);
