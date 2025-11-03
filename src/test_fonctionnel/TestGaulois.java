@@ -2,6 +2,7 @@ package test_fonctionnel;
 
 import personnages.Gaulois;
 import personnages.Romain;
+import personnages.Druide;
 
 public class TestGaulois {
     public static void main(String[] args) {
@@ -9,7 +10,7 @@ public class TestGaulois {
         Gaulois obelix  = new Gaulois("Obélix", 16);
 
         asterix.parler("Bonjour Obélix.");
-        obelix.parler("Bonjour Astérix. Ca te dirais d'aller chasser des sangliers ?)");
+        obelix.parler("Bonjour Astérix. Ca te dirais d'aller chasser des sangliers ?);");
         asterix.parler("Oui très bonne idée.");
 
         Romain minus = new Romain("Minus", 6);
@@ -20,13 +21,11 @@ public class TestGaulois {
         asterix.frapper(minus);
 
         Romain brutus = new Romain("Brutus", 14);
-        personnages.Druide panoramix = new personnages.Druide("Panoramix", 2);
-        personnages.Chaudron chaudron = new personnages.Chaudron();
+        Druide panoramix = new Druide("Panoramix", 2);
 
-        panoramix.fabriquerPotion(4, 3);
-        panoramix.remplirChaudron(chaudron);
-        panoramix.boosterGaulois(obelix);   // refuse
-        panoramix.boosterGaulois(asterix);  // donne potion
+        panoramix.fabriquerPotion(4);
+        panoramix.boosterGaulois(obelix);   // refusé
+        panoramix.boosterGaulois(asterix);  // accepté
 
         asterix.frapper(brutus);
         asterix.frapper(brutus);
