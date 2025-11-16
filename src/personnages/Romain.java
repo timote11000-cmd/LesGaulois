@@ -1,49 +1,80 @@
 package personnages;
 
+import objets.Equipement;
+
 public class Romain {
-    private String nom;
-    private int force;
+	private String nom;
+	private int force;
 
-    public Romain(String nom, int force) {
-        this.nom = nom;
-        this.force = force;
-    }
+	private Equipement[] equipements = new Equipement[2];
+	private int nbEquipement = 0;
 
-    public String getNom() {
-        return nom;
-    }
+	public Romain(String nom, int force) {
+		this.nom = nom;
+		this.force = force;
+		assert isInvariantVerified() : "Invariant : la force du Romain doit être positive ou nulle.";
+	}
 
-    public void parler(String texte) {
-        System.out.println(prendreParole() + "\"" + texte + "\"");
-    }
+	public String getNom() {
+		return nom;
+	}
 
-    private String prendreParole() {
-        return "Le Romain " + nom + " : ";
-    }
+	public void parler(String texte) {
+		System.out.println(prendreParole() + "\"" + texte + "\"");
+	}
 
-    public void recevoirCoup(int forceCoup) {
-        //Précondition
-        assert force > 0 : "Erreur : la force du Romain doit être positive avant le coup.";
-        assert forceCoup > 0 : "Erreur : la force du coup doit être positive.";
+	private boolean isInvariantVerified() {
+		return force >= 0;
+	}
 
-        int forceAvant = force;
+	private String prendreParole() {
+		return "Le Romain " + nom + " : ";
+	}
 
-        //Traitement
-        force = force - forceCoup;
+	public void recevoirCoup(int forceCoup) {
+		// Précondition : la force du coup reçu est positive
+		assert forceCoup > 0 : "Erreur : la force du coup doit être positive.";
 
-        //Postconditions
-        assert force <= forceAvant : "Erreur : la force n’a pas diminué après le coup.";
-        assert force >= 0 : "Erreur : la force ne peut pas être négative.";
+		int forceAvant = force;
 
-        if (force < 1) {
-            force = 0;
-            parler("J'abandonne !");
-        } else {
-            parler("Aïe");
-        }
+		force -= forceCoup;
+		if (force < 1) {
+			force = 0;
+			parler("J'abandonne !");
+		} else {
+			parler("Aïe");
+		}
+		assert force <= forceAvant : "Erreur : la force du Romain n'a pas diminué.";
+		assert isInvariantVerified() : "Invariant : la force du Romain doit rester positive ou nulle.";
+	}
 
-        //Invariant
-        assert (force >= 0) : "Invariant : la force du Romain doit toujours rester positive.";
-    }
+	public void sEquiper(Equipement equipement) {
+		if (nbEquipement == 0) {
+			equipements[0] = equipement;
+			nbEquipement++;
+			System.out.println("Le soldat " + nom + " s'équipe avec un " + equipement + ".");
 
+		} else if (nbEquipement == 1) {
+			if (equipements[0] == equipement) {
+				System.out.println("Le soldat " + nom + " possède déjà un " + equipement + " !");
+
+			} else {
+				equipements[1] = equipement;
+				nbEquipement++;
+				System.out.println("Le soldat " + nom + " s'équipe avec un " + equipement + ".");
+			}
+		} else {
+			System.out.println("Le soldat " + nom + " est déjà bien protégé !");
+		}
+	}
+	
+	public static void main(String[] args) {
+
+	    Romain minus = new Romain("Minus", 6);
+
+	    minus.sEquiper(Equipement.CASQUE);
+	    minus.sEquiper(Equipement.CASQUE);
+	    minus.sEquiper(Equipement.BOUCLIER);
+	    minus.sEquiper(Equipement.CASQUE);
+	}
 }
