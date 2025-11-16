@@ -23,7 +23,7 @@ public class TestGaulois {
         Romain brutus = new Romain("Brutus", 14);
         Druide panoramix = new Druide("Panoramix", 2);
 
-        panoramix.fabriquerPotion(4);
+        panoramix.fabriquerPotion(4,3);
         panoramix.boosterGaulois(obelix);
         panoramix.boosterGaulois(asterix);
 

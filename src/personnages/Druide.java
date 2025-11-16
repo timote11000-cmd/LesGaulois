@@ -17,8 +17,8 @@ public class Druide {
         System.out.println(prendreParole() + "\"" + texte + "\"");
     }
 
-    public void fabriquerPotion(int nombreDeDose) {
-        parler("J’ai concocté " + nombreDeDose + " doses de potion magique.");
+    public void fabriquerPotion(int nombreDeDose, int forcePotion) {
+        parler("J’ai concocté " + nombreDeDose + " doses de potion magique. Elle a une force de " + forcePotion + ".");
     }
 
     public void boosterGaulois(Gaulois gaulois) {
