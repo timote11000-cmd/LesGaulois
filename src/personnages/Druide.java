@@ -19,13 +19,24 @@ public class Druide {
 	}
 	
 	private String prendreParole() {
-		return "Le gaulois " + " : ";
-		
+	    return "Le druide " + nom + " : ";
 	}
 
 	public void fabriquerPotion(int quantite, int forcePotion) {
         chaudron.remplirChaudron(quantite, forcePotion);
     }
 	
+	public void booster(Gaulois gaulois) {
+	    if (gaulois.getNom().equals("Obélix")) {
+	        parler("Non, Obélix ! Tu es tombé dedans quand tu étais petit !");
+	    } else {
+	        if (chaudron.resterPotion()) {
+	            int forcePotion = chaudron.prendreLouche();
+	            gaulois.boirePotion(forcePotion);
+	        } else {
+	            parler("Désolé, je n'ai plus de potion !");
+	        }
+	    }
+	}
 	
 }
